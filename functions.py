@@ -1,3 +1,10 @@
+import tkinter
+from tkinter import messagebox
+import sys
+# This code is to hide the main tkinter window
+root = tkinter.Tk()
+root.withdraw()
+
 # assuming the report file is based on one hour only(between 12-1 there is only one guard)
 
 def shiftSummary(reportLines, guardset):
@@ -15,8 +22,13 @@ def shiftSummary(reportLines, guardset):
                 wakeTime=line[1][3:5]   # takes only minute varriable of the report line
                 # update list with guard number, fall asleep minute, wakeup minute, and sleep length in minutes
                 shift.append([currentGuardNum, fallTime, wakeTime, int(wakeTime) - int(fallTime)])
+        else:
+            if len(line)!= 6 or len(line)!=4 :
+                print("Unsupported format line on report file!")
+            if messagebox.askokcancel("Unsupported format", "Please press OK and choose supported format report file! \n if you choose cancel program will check next line report and discard wrong format line."):
+                sys.exit() # will stop script from running with wrong format
             else:
-                continue # ignore iteration with wrong format line
+                continue # will discard iteration and continue with next line on report
     return shift,guardset
 
 
