@@ -1,7 +1,7 @@
 from functions import *
-# please change shiftReport.txt name to check other scenarios
+# please change shiftReport.txt name to check other scenarios "shiftReport1/2/3/4.txt" on line below
 # "shiftReport4.txt" Represents wrong format report - run and check it out
-a_file = open("shiftReport4.txt", "r")  # input report file
+a_file = open("shiftReport.txt", "r")  # input report file
 reportLines = [(line.strip()).split() for line in a_file]  # generate report file into list by lines
 a_file.close()  # close file
 
